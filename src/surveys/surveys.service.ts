@@ -13,7 +13,9 @@ export class SurveysService {
 
   async create(createSurveyDto: CreateSurveyDto) {
     const survey = await this.surveyModel.create(createSurveyDto);
-    const qrCode = await toDataURL(survey._id.toString());
+    const qrCode = await toDataURL(
+      `https://surveys-web-two.vercel.app/run/${survey._id.toString()}`,
+    );
     survey.qrCode = qrCode;
     survey.save();
 
@@ -32,7 +34,7 @@ export class SurveysService {
     return this.surveyModel.updateOne({ _id: id }, updateSurveyDto);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} survey`;
+  remove(id: string) {
+    return this.surveyModel.deleteOne({ _id: id });
   }
 }
