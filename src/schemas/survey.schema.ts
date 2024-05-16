@@ -4,9 +4,36 @@ import { HydratedDocument } from 'mongoose';
 export type SurveyDocument = HydratedDocument<Survey>;
 
 @Schema()
-class Json {
+class Element {
   @Prop()
-  pages?: any[];
+  type: string;
+
+  @Prop()
+  name: string;
+
+  @Prop()
+  title?: string;
+}
+
+@Schema()
+class SurveyPage {
+  @Prop()
+  name?: string;
+
+  @Prop({ type: Element })
+  elements: Element[];
+}
+
+@Schema()
+export class Json {
+  @Prop()
+  pages?: SurveyPage[];
+
+  @Prop()
+  title?: string;
+
+  @Prop()
+  logo?: string;
 }
 
 @Schema()

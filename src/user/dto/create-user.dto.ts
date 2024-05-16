@@ -1,12 +1,12 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsString } from 'class-validator';
-import { SurveyJSON } from './survey-json.dto';
 
-export class CreateSurveyDto {
+export class CreateUserDto {
   @ApiProperty()
   @IsString()
-  name: string;
+  username: string;
 
   @ApiProperty()
-  json: SurveyJSON;
+  @IsString()
+  password: string;
 }

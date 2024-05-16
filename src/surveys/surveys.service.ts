@@ -4,7 +4,6 @@ import { UpdateSurveyDto } from './dto/update-survey.dto';
 import { InjectModel } from '@nestjs/mongoose';
 import { Survey } from 'src/schemas/survey.schema';
 import { Model } from 'mongoose';
-import { ObjectId } from 'mongoose';
 import { toDataURL } from 'qrcode';
 
 @Injectable()

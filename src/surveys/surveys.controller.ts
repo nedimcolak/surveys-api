@@ -8,8 +8,8 @@ import {
   Delete,
 } from '@nestjs/common';
 import { SurveysService } from './surveys.service';
-import { CreateSurveyDto } from './dto/create-survey.dto';
 import { UpdateSurveyDto } from './dto/update-survey.dto';
+import defaultSurvey from './defaultSurvey';
 
 @Controller('surveys')
 export class SurveysController {
@@ -17,23 +17,7 @@ export class SurveysController {
 
   @Post()
   create() {
-    const createSurveyDto: CreateSurveyDto = {
-      name: 'Your amazing survey',
-      json: {
-        pages: [
-          {
-            elements: [
-              {
-                type: 'radiogroup',
-                name: 'question1',
-                choices: ['1', '2', '3'],
-              },
-            ],
-          },
-        ],
-      },
-    };
-    return this.surveysService.create(createSurveyDto);
+    return this.surveysService.create(defaultSurvey);
   }
 
   @Get()
