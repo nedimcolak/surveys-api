@@ -15,4 +15,9 @@ export class SurveyJSON {
   @IsString()
   @IsOptional()
   logo?: string;
+
+  @ApiProperty()
+  @IsOptional()
+  @IsString()
+  cookieName?: string;
 }

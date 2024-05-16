@@ -34,6 +34,9 @@ export class Json {
 
   @Prop()
   logo?: string;
+
+  @Prop()
+  cookieName?: string;
 }
 
 @Schema()
